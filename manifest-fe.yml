@@ -31,3 +31,19 @@ spec:
       port: 80
       targetPort: 80
   type: LoadBalancer
+
+---
+apiVersion: networking/v1
+kind: Ingress
+metadata:
+  name: devops-fe-ingress
+spec:
+  rules:
+    - host: devops-fe.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: devops-fe-service
